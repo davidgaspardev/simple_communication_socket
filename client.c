@@ -7,14 +7,14 @@
 
 #define SOCK_ERROR              -1
 #define PROTOCOL_TYPE_SOCK       0
-#define PORT_SOCK             5000
+#define PORT_SOCK             5100
 
 int main() {
 
   int sock, connection;
   char client_msg[1024],
        server_msg[1024],
-       addressIP[12];
+          addressIP[12];
 
   struct sockaddr_in address;
 
@@ -32,14 +32,15 @@ int main() {
 
   address.sin_family      = AF_INET;
   address.sin_port        = htons(PORT_SOCK);
-  address.sin_addr.s_addr = inet_addr(/*addressIP*/"172.0.0.1");
+  address.sin_addr.s_addr = inet_addr(addressIP);
 
-  //Connectingto the Server
+  //Connected with the Server
   if(connect(sock, (struct sockaddr*)&address, sizeof(address)) == SOCK_ERROR)
   {
     perror("[ERROR] connect");
     return 0;
   }
+  printf("[OK]: connect() -> successfully\n");
 
   do{
     memset(client_msg, 0, sizeof(client_msg));

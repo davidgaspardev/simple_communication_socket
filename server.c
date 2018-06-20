@@ -7,7 +7,7 @@
 
 #define SOCK_ERROR              -1
 #define PROTOCOL_TYPE_SOCK       0
-#define PORT_SOCK             5000
+#define PORT_SOCK             5100
 
 int main() {
 
@@ -16,8 +16,9 @@ int main() {
        server_msg[1024];
 
   struct sockaddr_in address;
-  address.sin_family    = AF_INET;
-  address.sin_port      = htons(PORT_SOCK);
+  address.sin_family      = AF_INET;
+  address.sin_port        = htons(PORT_SOCK);
+  address.sin_addr.s_addr = INADDR_ANY;
   memset(address.sin_zero, 0x0, 8);
 
   //Creating socket
