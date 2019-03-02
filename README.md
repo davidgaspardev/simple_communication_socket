@@ -2,7 +2,7 @@
 
 Simple communication with socket, using the c programming language, following the model client-server.
 
-## Sckets in C
+## Sockets in C
 
 ### Stages for server
 
